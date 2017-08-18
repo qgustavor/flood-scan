@@ -24,6 +24,8 @@ options:
   its cells should be filled with. Defaults to `n + 2`.
 * `empty`: A function which takes the value of a cell, and returns whether
   it should be considered empty. By default, only zero is considered empty.
+* `maxArea`: The maximum area a room can have. Defaults to infinity.
+* `minArea`: The minimum area a room can have. Defaults to 0.
 
 This will return an array of objects (one for each room). Each have the
 following properties, most of which are borrowed from
