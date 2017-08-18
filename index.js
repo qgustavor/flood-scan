@@ -8,6 +8,8 @@ function scan(grid, opts) {
   var indexer = 'indexer' in opts ? functor(opts.indexer) : defaultIndexer
     , empty = opts.empty || defaultEmpty
     , limit = opts.limit || Infinity
+    , minArea = opts.minArea || 0
+    , maxArea = opts.maxArea || Infinity
     , length = grid.data.length
     , height = grid.shape[1]
     , width = grid.shape[0]
@@ -22,6 +24,8 @@ function scan(grid, opts) {
   for (y = 0; y < height; y += 1) {
     if (empty(grid.get(x, y))) {
       metric = fill(grid, x, y, indexer(idx++))
+      if (metric.area > maxArea) continue
+      if (metric.area < minArea) continue
       metric.start = [x, y]
       metrics.push(metric)
       if (idx > limit) break top
